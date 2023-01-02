@@ -44,8 +44,9 @@ public class Account {
     private String transformEmail() {
         String firstName = this.user.getFirstName().replaceAll("\\s", "").toLowerCase();
         String lastName = this.user.getLastName().replaceAll("\\s", "").toLowerCase();
+        String domain = this.getDepartment().equals("") ? "company.com" : ".company.com";
 
-        return firstName + "." + lastName + "@" + this.getDepartment() + ".company.com";
+        return firstName + "." + lastName + "@" + this.getDepartment() + domain;
     }
 
     private String generateRandomPassword() {
@@ -78,7 +79,7 @@ public class Account {
             case ACCOUNTING:
                 return "accounting";
             default:
-                return "default";
+                return "";
         }
     }
 
